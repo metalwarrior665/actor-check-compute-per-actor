@@ -1,0 +1,14 @@
+{
+    "title": "Compute check input",
+    "type": "object",
+    "schemaVersion": 1,
+    "required": [],
+    "properties": {
+        "checkTime": {
+            "title": "Check time",
+            "type": "string",
+            "description": "Which period do you want to analyze.",
+            "enum": ["last-day", "last-month"]
+        }
+    }
+}
