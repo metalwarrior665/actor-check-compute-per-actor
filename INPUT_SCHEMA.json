@@ -8,7 +8,7 @@
             "title": "Check time",
             "type": "string",
             "description": "Which period do you want to analyze.",
-            "enum": ["last-day", "last-month"]
+            "enum": ["last-day", "last-month", "this-month"]
         }
     }
 }
