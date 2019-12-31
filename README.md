@@ -7,7 +7,7 @@ This is a simple actor to check your compute units usage on Apify for each of yo
 If you run this actor, it will go through all of your actor and their runs for the previous day/month and calculate their sum. It doesn't matter if you run it in the morning or evening because it always counts the previous day/month. The object with the data is then stored into the default key value store of the run.
 
 ### input
-- checkTime<`String`>: Can be either `last-day` or `last-month`
+- checkTime<`String`>: Can be either `last-day`, `last-month` or `this-month`
 
 ### warning!
 

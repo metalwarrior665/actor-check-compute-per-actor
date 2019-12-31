@@ -1,6 +1,8 @@
 const Apify = require('apify');
 const moment = require('moment');
 
+console.log('is home', Apify.isAtHome())
+
 const MAX_CALLS_PER_SECOND = 20;
 let callsThisSecond = 0
 
@@ -62,6 +64,10 @@ Apify.main(async() => {
     if (input.checkTime === 'last-month') {
         dateFrom = moment().subtract(1,'months').startOf('month')
         dateTo = moment().startOf('month')
+    }
+    if (input.checkTime === 'this-month') {
+        dateFrom = moment().startOf('month');
+        dateTo = moment();
     }
     const stats = {};
 
