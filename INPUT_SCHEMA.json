@@ -9,6 +9,12 @@
             "type": "string",
             "description": "Which period do you want to analyze.",
             "enum": ["last-day", "last-month", "this-month"]
+        },
+        "actorNamePattern": {
+            "title": "Actor name pattern",
+            "type": "string",
+            "description": "Count CU only for the actors matching the pattern (Regular expression).",
+            "editor": "textfield"
         }
     }
 }

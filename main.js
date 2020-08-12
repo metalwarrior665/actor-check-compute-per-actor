@@ -49,23 +49,29 @@ const getRuns = async (acts, items, offset, actId, dateFrom) => {
     return getRuns(acts, items, offset + 1000, actId, dateFrom)
 }
 
+const filterActorsByPattern = (actors, pattern)=>{
+    const regexp = new RegExp(pattern);
+    return actors.filter(actor => actor.name.match(regexp))
+}
+
 Apify.main(async() => {
     const input = await Apify.getValue('INPUT')
     console.log('input')
     console.dir(input)
+    const {checkTime, actorNamePattern} = input;
 
     const { acts } = Apify.client
     let dateFrom
     let dateTo
-    if (input.checkTime === 'last-day') {
+    if (checkTime === 'last-day') {
         dateFrom = moment().subtract(1,'days').startOf('day')
         dateTo = moment().startOf('day')
     }
-    if (input.checkTime === 'last-month') {
+    if (checkTime === 'last-month') {
         dateFrom = moment().subtract(1,'months').startOf('month')
         dateTo = moment().startOf('month')
     }
-    if (input.checkTime === 'this-month') {
+    if (checkTime === 'this-month') {
         dateFrom = moment().startOf('month');
         dateTo = moment();
     }
@@ -76,7 +82,12 @@ Apify.main(async() => {
     console.log('Date to')
     console.log(dateTo)
 
-    const myActors = await getAllActors(acts, [], 0)
+    let myActors = await getAllActors(acts, [], 0)
+
+    if(actorNamePattern){
+        myActors = filterActorsByPattern(myActors, actorNamePattern)
+    }
+
     console.log(`I have ${myActors.length} actors`)
     for (const myActor of myActors) {
         console.log('checking actor:', myActor.name)

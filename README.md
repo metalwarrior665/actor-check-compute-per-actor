@@ -8,6 +8,7 @@ If you run this actor, it will go through all of your actor and their runs for t
 
 ### input
 - checkTime<`String`>: Can be either `last-day`, `last-month` or `this-month`
+- actorNamePattern<`String`>: Count CU only for the actors matching the pattern (Regular expression).
 
 ### warning!
 
